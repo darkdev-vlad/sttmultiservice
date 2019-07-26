@@ -1,0 +1,5 @@
+.DS_STORE
+.idea
+venv*
+*.pyc
+lib/ysk/iam_data.json
