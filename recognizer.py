@@ -23,6 +23,10 @@ parser.add_argument('--auto-punctuation', '-p', dest='auto_punctuation', default
                     help='Enable automatic punctuation (BETA) (Google) (0 or 1) default 0', )
 parser.add_argument('--phrases-file', '-pf', dest='phrases_file', default='0',
                     help='File for phrase hints (Google) (0 or file path) default 0', )
+parser.add_argument('--diarization', '-d', dest='diarization', default='0',
+                    help='Separating different speakers in an audio recording (Google) (0 or 1) default 0', )
+parser.add_argument('--speaker-count', '-sc', dest='speaker_count', default='0',
+                    help='Number of speakers for diarization (Google) default 0', )
 
 yes_list = ['1', 'true', 'y', 'yes']
 
@@ -35,6 +39,8 @@ GoogleASR.confidence = args.confidence.lower() in yes_list
 GoogleASR.use_beta = args.beta.lower() in yes_list
 GoogleASR.split_by_channels = args.split_by_channels.lower() in yes_list
 GoogleASR.automatic_punctuation = args.auto_punctuation.lower() in yes_list
+GoogleASR.enable_speaker_diarization = args.diarization.lower() in yes_list
+GoogleASR.diarization_speaker_count = int(args.speaker_count)
 
 if args.phrases_file != "0" and os.path.isfile(args.phrases_file):
     with open(os.path.abspath(args.phrases_file), 'r') as phrases_file:

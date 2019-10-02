@@ -94,6 +94,11 @@ def type_google(file_name: str):
         config.enable_word_confidence = GoogleASR.confidence
         config.enable_automatic_punctuation = GoogleASR.automatic_punctuation
 
+        if GoogleASR.enable_speaker_diarization:
+            config.enable_speaker_diarization = GoogleASR.enable_speaker_diarization
+            if GoogleASR.diarization_speaker_count > 0:
+                config.diarization_speaker_count = GoogleASR.diarization_speaker_count
+
     # Detects speech in the audio file
     operation = client.long_running_recognize(config, audio)
     strings = []

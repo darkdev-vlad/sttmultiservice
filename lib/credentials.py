@@ -56,6 +56,8 @@ class GoogleASR(GlobalConfig):
     use_beta = False
     split_by_channels = False
     automatic_punctuation = False
+    enable_speaker_diarization = False
+    diarization_speaker_count = False
     phrases_list = []
     api_data = {}
     required_env_variables = {
